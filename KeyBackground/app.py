@@ -14,7 +14,7 @@ def connectPostgre():
         conn = psycopg2.connect(conn_string)
         # conn.cursor will return a cursor object, you can use this cursor to perform queries
         cursor = conn.cursor()
-        print ("Connected!\n")
+        print ("Connected to postgres from python!")
         try:
             cursor.execute("""SELECT * from keyValues""")
             rows = cursor.fetchall()
