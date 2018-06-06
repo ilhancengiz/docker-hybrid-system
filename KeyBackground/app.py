@@ -18,7 +18,6 @@ def connectPostgre():
         try:
             cursor.execute("""SELECT * from keyValues""")
             rows = cursor.fetchall()
-            print(rows)
             for row in rows:
                 print("Key: {0}, Value: {1}".format(row[0], row[1]))       
         except:
@@ -29,7 +28,7 @@ def connectPostgre():
 def init():
     while True:
         connectPostgre()
-        time.sleep(10)
+        time.sleep(30)
         
 if __name__ == "__main__":
     init()
