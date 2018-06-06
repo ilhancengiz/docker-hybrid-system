@@ -1,0 +1,39 @@
+version: "3.4"
+
+services:
+
+  keyworker:
+    build: ./KeyBackground
+    command: python3 app.py
+    volumes:
+      - ./KeyBackground:/app
+    networks:
+      - back-tier
+    depends_on:
+      - db
+
+  keyapi:
+    build: ./KeyManagement
+    command: nodemon server.js
+    volumes:
+      - ./KeyManagement:/app
+    ports:
+      - "5001:8081"
+    networks:
+      - back-tier
+    depends_on:
+      - db
+	  
+  db:
+    image: postgres:9.4
+    container_name: db
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+    networks:
+      - back-tier
+
+volumes:
+  db-data:
+
+networks:
+  back-tier:
