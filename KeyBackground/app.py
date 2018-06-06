@@ -35,7 +35,7 @@ def setRedisValuesFromPostgres(redis, dbValues):
     print(type(dbValues[0][1]))
     # set new values from db
     for row in dbValues:
-	key = str(row[0])
+        key = str(row[0])
         value = str(row[1])
         redis.set(key, value)		
     print ("Redis values updated from db values!")		
