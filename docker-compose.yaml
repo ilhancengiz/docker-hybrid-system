@@ -1,6 +1,15 @@
 version: "3.4"
 
 services:
+  keyPublicApi:
+      build: ./KeyPublicWebApi
+      ports:
+        - "5091:80"
+      networks:
+        - front
+        - back-tier
+      depends_on:
+        - redis
 
   keyworker:
     build: ./KeyBackground
@@ -21,6 +30,7 @@ services:
       - "5001:8081"
     networks:
       - back-tier
+      - front
     depends_on:
       - db
 
@@ -44,3 +54,4 @@ volumes:
 
 networks:
   back-tier:
+  front:
