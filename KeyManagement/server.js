@@ -79,11 +79,11 @@ function CreateTableIfNotExists()
           console.log(res);
           client.end();
         });    
-    client.query('DELETE FROM keyValues', (err, res) => {
-          if (err) throw err;
-          console.log(res);
-          client.end();
-        });
+    //client.query('DELETE FROM keyValues', (err, res) => {
+          //if (err) throw err;
+          //console.log(res);
+          //client.end();
+        //});
   });
 }
 
