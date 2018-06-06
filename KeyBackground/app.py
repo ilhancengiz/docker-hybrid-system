@@ -18,8 +18,9 @@ def connectPostgre():
         try:
             cursor.execute("""SELECT * from keyValues""")
             rows = cursor.fetchall()
-            for row in rows:
-                print("Key: {0}, Value: {1}".format(row["key"], row["value"]))       
+            print(rows)
+            # for row in rows:
+                # print("Key: {0}, Value: {1}".format(row["key"], row["value"]))       
         except:
             print("I can't SELECT from keyValues")
     except:
