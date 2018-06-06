@@ -3,10 +3,9 @@ import psycopg2
 import time
 
 def get_redis():
-    if not hasattr(g, 'redis'):
-        g.redis = Redis(host="redis", db=0, socket_timeout=5)
+    redis = Redis(host="redis", db=0, socket_timeout=5)
     print ("Connected to redis from python!")
-    return g.redis
+    return redis
 
 def connectPostgre():
     conn_string = "postgres://postgres@db/postgres"
