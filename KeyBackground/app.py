@@ -30,9 +30,9 @@ def connectPostgre():
 def setRedisValuesFromPostgres(redis, dbValues):
     # first delete all keys from redis
     for key in redis.scan_iter():
-	    redis.delete(key)
+        redis.delete(key)
     print ("All Redis values deleted!")	
-	# set new values from db
+    # set new values from db
     for row in dbValues:
         redis.set(row[0], row[1])		
     print ("Redis values updated from db values!")		
@@ -40,7 +40,7 @@ def setRedisValuesFromPostgres(redis, dbValues):
 def init():
     while True:
         dbValues = connectPostgre()
-		redis = get_redis()	
+	redis = get_redis()	
         setRedisValuesFromPostgres(redis, dbValues)		
         time.sleep(30)
         
