@@ -29,8 +29,7 @@ def connectPostgre():
 def init():
     while True:
         connectPostgre()
-        # Sleep for a minute
-        time.sleep(60)
+        time.sleep(10)
         
 if __name__ == "__main__":
     init()
