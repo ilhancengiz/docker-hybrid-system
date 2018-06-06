@@ -40,7 +40,7 @@ def setRedisValuesFromPostgres(redis, dbValues):
 def init():
     while True:
         dbValues = connectPostgre()
-	redis = get_redis()	
+        redis = get_redis()	
         setRedisValuesFromPostgres(redis, dbValues)		
         time.sleep(30)
         
