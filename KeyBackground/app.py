@@ -31,9 +31,13 @@ def setRedisValuesFromPostgres(redis, dbValues):
     for key in redis.scan_iter():
         redis.delete(key)
     print ("All Redis values deleted!")	
+    print(type(dbValues[0][0])
+    print(type(dbValues[0][1])
     # set new values from db
     for row in dbValues:
-        redis.set(str(row[0]), str(row[1]))		
+	key = str(row[0])
+        value = str(row[1])
+        redis.set(key, value)		
     print ("Redis values updated from db values!")		
 		
 def init():
