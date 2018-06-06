@@ -26,10 +26,9 @@ def connectPostgre():
         print("I am unable to connect to the database.")
 
 def init():
-    while True:
-        connectPostgre()
-        # Sleep for a minute
-        time.sleep(60)
+    connectPostgre()
+    # Sleep for a minute
+    # time.sleep(60)
         
 if __name__ == "__main__":
     init()
