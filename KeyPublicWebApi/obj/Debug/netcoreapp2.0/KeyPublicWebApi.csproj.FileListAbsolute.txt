@@ -1,0 +1,10 @@
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\bin\Debug\netcoreapp2.0\KeyPublicWebApi.deps.json
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\bin\Debug\netcoreapp2.0\KeyPublicWebApi.runtimeconfig.json
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\bin\Debug\netcoreapp2.0\KeyPublicWebApi.runtimeconfig.dev.json
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\bin\Debug\netcoreapp2.0\KeyPublicWebApi.dll
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\bin\Debug\netcoreapp2.0\KeyPublicWebApi.pdb
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\obj\Debug\netcoreapp2.0\KeyPublicWebApi.csproj.CoreCompileInputs.cache
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\obj\Debug\netcoreapp2.0\KeyPublicWebApi.AssemblyInfoInputs.cache
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\obj\Debug\netcoreapp2.0\KeyPublicWebApi.AssemblyInfo.cs
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\obj\Debug\netcoreapp2.0\KeyPublicWebApi.dll
+D:\PersonalWork\OwnProjects\Docker Playground\docker-hybrid-system-master\KeyPublicWebApi\obj\Debug\netcoreapp2.0\KeyPublicWebApi.pdb
