@@ -24,7 +24,13 @@ namespace KeyPublicWebApi.Controllers
 	public IEnumerable<string> Get()
 	{
 	    ConnectionMultiplexer m = _redisFac.Connection();
-            return m.GetServer("redis:6379").Keys().Select(key => key.GetType().ToString() + (string)key).ToList();
+            List<string> keys = m.GetServer("redis:6379").Keys().Select(key => (string)key).ToList();
+	    List<string> values = new List<string>();
+	    foreach(string key in keys)
+	    {
+	    	values.Add(_distributedCache.Get(key));
+	    }
+	     return values;
 	}
 
 	// GET api/values/5
