@@ -23,7 +23,7 @@ namespace KeyPublicWebApi.Controllers
         [HttpGet]
 	public IEnumerable<string> Get()
 	{
-	    ConnectionMultiplexer m = redisFac.Connection();
+	    ConnectionMultiplexer m = _redisFac.Connection();
             return m.GetServer("redis:6379").Keys().Select(key => (string)key).ToList();
 	}
 
