@@ -28,7 +28,7 @@ namespace KeyPublicWebApi.Controllers
 	    List<string> values = new List<string>();
 	    foreach(string key in keys)
 	    {
-	    	values.Add(_distributedCache.Get(key));
+	    	values.Add(Encoding.UTF8.GetString(_distributedCache.Get(key)));
 	    }
 	     return values;
 	}
