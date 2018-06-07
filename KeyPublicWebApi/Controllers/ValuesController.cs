@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Redis;
 using Microsoft.Extensions.Caching.Distributed;
+using StackExchange.Redis;
 
 namespace KeyPublicWebApi.Controllers
 {
@@ -12,16 +13,18 @@ namespace KeyPublicWebApi.Controllers
     public class ValuesController : Controller
     {
 	private readonly IDistributedCache _distributedCache;
-	public ValuesController(IDistributedCache distributedCache)
+	private readonly IRedisConnectionFactory _redisFac;
+	public ValuesController(IDistributedCache distributedCache, IRedisConnectionFactory connFac)
         {
             _distributedCache = distributedCache;
+	    _redisFac = connFac;
         }
         
         [HttpGet]
 	public IEnumerable<string> Get()
 	{
-	var cachedMessage = _distributedCache.GetString("i0");
-	return new List<string> { cachedMessage };
+	    ConnectionMultiplexer m = redisFac.Connection();
+            return m.GetServer("redis:6379").Keys().Select(key => (string)key).ToList();
 	}
 
 	// GET api/values/5
@@ -32,5 +35,28 @@ namespace KeyPublicWebApi.Controllers
 	return cachedMessage;
 	}
 
-	}
+    }
+    
+    public interface IRedisConnectionFactory
+    {
+        ConnectionMultiplexer Connection();
+    }
+	
+    public class RedisConnectionFactory : IRedisConnectionFactory
+    {
+        /// <summary>
+        ///     The _connection.
+        /// </summary>
+        private readonly Lazy<ConnectionMultiplexer> _connection;
+
+        public RedisConnectionFactory()
+        {
+            this._connection = new Lazy<ConnectionMultiplexer>(() => ConnectionMultiplexer.Connect("redis:6379"));
+        }
+
+        public ConnectionMultiplexer Connection()
+        {
+            return this._connection.Value;
+        }
+    }
 }
