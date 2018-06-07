@@ -20,6 +20,8 @@ services:
       - back-tier
     depends_on:
       - db
+      - redis
+      - keyapi
 
   keyapi:
     build: ./KeyManagement
