@@ -32,7 +32,7 @@ namespace KeyPublicWebApi.Controllers
 	{
 	    ConnectionMultiplexer m = _redisFac.Connection();
 	    var db = m.GetDatabase();
-	    return db.StringGet(id)
+	    return db.StringGet(id);
 	}
 
     }
