@@ -26,7 +26,7 @@ namespace KeyPublicWebApi.Controllers
 	{
 	    ConnectionMultiplexer m = _redisFac.Connection();
             List<string> keys = m.GetServer("redis:6379").Keys().Select(key => (string)key).ToList();	    
-	    var db = Connection.GetDatabase();
+	    var db = m.GetDatabase();
 	    List<string> values = new List<string>();
 	    foreach(string key in keys)
 	    {
