@@ -13,11 +13,9 @@ namespace KeyPublicWebApi.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-	private readonly IDistributedCache _distributedCache;
 	private readonly IRedisConnectionFactory _redisFac;
-	public ValuesController(IDistributedCache distributedCache, IRedisConnectionFactory connFac)
+	public ValuesController(IRedisConnectionFactory connFac)
         {
-            _distributedCache = distributedCache;
 	    _redisFac = connFac;
         }
         
@@ -25,22 +23,16 @@ namespace KeyPublicWebApi.Controllers
 	public IEnumerable<string> Get()
 	{
 	    ConnectionMultiplexer m = _redisFac.Connection();
-            List<string> keys = m.GetServer("redis:6379").Keys().Select(key => (string)key).ToList();	    
-	    var db = m.GetDatabase();
-	    List<string> values = new List<string>();
-	    foreach(string key in keys)
-	    {
-      		values.Add(db.StringGet(key));
-	    }
-	     return values;
+            return m.GetServer("redis:6379").Keys().Select(key => (string)key).ToList();
 	}
 
 	// GET api/values/5
 	[HttpGet("{id}")]
 	public string Get(string id)
 	{
-	var cachedMessage = _distributedCache.GetString(id);
-	return cachedMessage;
+	    ConnectionMultiplexer m = _redisFac.Connection();
+	    var db = m.GetDatabase();
+	    return db.StringGet(id)
 	}
 
     }
