@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Caching.Redis;
 using Microsoft.Extensions.Caching.Distributed;
+using KeyPublicWebApi.Controllers;
 
 namespace KeyPublicWebApi
 {
@@ -30,6 +31,7 @@ namespace KeyPublicWebApi
             {
                 options.Configuration = "redis:6379";
             });
+	    services.AddSingleton<IRedisConnectionFactory, RedisConnectionFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
